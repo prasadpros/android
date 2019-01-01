@@ -1,0 +1,65 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.sph.mobnetusage"
+        minSdkVersion 21
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+        vectorDrawables.useSupportLibrary = true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    androidExtensions {
+        experimental = true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+
+}
+
+apply from: 'dependencies.gradle'
+
+dependencies {
+
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation supportLibs
+    implementation kotlinLibs
+    implementation networkLibs
+    implementation networkLibs
+    implementation rxJavaLibs
+    implementation otherLibs
+
+    kapt annotationProcessorLibs
+    kaptTest daggerCompiler
+    kaptAndroidTest daggerCompiler
+
+    testImplementation unitTestLibs
+    androidTestImplementation androidTestsLibs
+    testImplementation unitTestLibs
+
+    implementation('com.github.bumptech.glide:glide:4.8.0') {
+        exclude group: "com.android.support"
+    }
+}
+
+tasks.matching { it instanceof Test }.all {
+    testLogging.events = ["failed", "passed", "skipped"]
+}
