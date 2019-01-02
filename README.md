@@ -4,12 +4,12 @@ This project covers mainly consuming the web API for mobile data consumption dur
 
 This App follows the well architectural design and design patterns for achieving better maintainable, loosely coupled and unit testable. The following patterns and libraries are used.
 
-1.Kotlin\n
-2.MVP 
-3.Dagger2
-4.Retrofit
-5.Gson
-6.RxKotlin
-7.Junit
-8.Mockito
-9.Expresso
+-Kotlin\n
+-MVP 
+-Dagger2
+-Retrofit
+-Gson
+-RxKotlin
+-Junit
+-Mockito
+-Expresso
