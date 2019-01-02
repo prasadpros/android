@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import com.sph.mobdatausage.R
 import com.sph.mobdatausage.features.home.adapter.MobDataConsumptionAdapter.Listener.Companion.NO_OP
 import com.sph.mobdatausage.model.DataConsumedYearly
-import com.sph.mobdatausage.model.MobDataConsumption
 import kotlinx.android.synthetic.main.item_statistics.view.*
 
 class MobDataConsumptionAdapter : RecyclerView.Adapter<MobDataConsumptionAdapter.NetworkStatistics>() {
@@ -55,7 +54,7 @@ class MobDataConsumptionAdapter : RecyclerView.Adapter<MobDataConsumptionAdapter
             itemView.tvQuaFourDataVolume.text = mobNetConsumption.quarterlyData[3]
 
             itemView.setOnClickListener {
-                networkStatistics[layoutPosition]
+                listener.statisticsClicked(mobNetConsumption)
             }
         }
     }
@@ -65,12 +64,12 @@ class MobDataConsumptionAdapter : RecyclerView.Adapter<MobDataConsumptionAdapter
         companion object {
 
             val NO_OP = object : Listener {
-                override fun statisticsClicked(mobDataConsumption: MobDataConsumption) {
+                override fun statisticsClicked(dataConsumedYearly: DataConsumedYearly) {
                     // no op
                 }
             }
         }
 
-        fun statisticsClicked(mobDataConsumption: MobDataConsumption)
+        fun statisticsClicked(dataConsumedYearly: DataConsumedYearly)
     }
 }

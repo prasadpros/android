@@ -10,7 +10,6 @@ import com.sph.mobdatausage.exts.show
 import com.sph.mobdatausage.exts.showToast
 import com.sph.mobdatausage.features.home.adapter.MobDataConsumptionAdapter
 import com.sph.mobdatausage.model.DataConsumedYearly
-import com.sph.mobdatausage.model.MobDataConsumption
 import kotlinx.android.synthetic.main.activity_mobdata_stats.*
 import javax.inject.Inject
 
@@ -31,11 +30,15 @@ class MobDataConsumptionActivity : BaseActivity<MobDataConsumptionPresenter>(),
     private fun setupRecyclerView() {
         mobDataConsumptionAdapter.setListener(this)
         rvNetworkStatistics.layoutManager = LinearLayoutManager(this)
+        mobDataConsumptionAdapter.setListener(this)
         rvNetworkStatistics.adapter = mobDataConsumptionAdapter
     }
 
-    override fun statisticsClicked(mobDataConsumption: MobDataConsumption) {
-
+    override fun statisticsClicked(dataConsumedYearly: DataConsumedYearly) {
+      if(dataConsumedYearly.isDataVolumeConsumptionDecreased){
+          showToast("${resources.getString(R.string.data_volume_usage_decresed_msg)} " +
+                  " in ${dataConsumedYearly.yearOfConsumption}")
+      }
     }
 
     override fun showError() {

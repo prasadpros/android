@@ -1,17 +1,9 @@
 <resources>
     <string name="app_name">MobDataConsumption</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
-    <string name="news_title">Congrats! You are featured on Home page as a recommended seller!</string>
-    <string name="news_description">Hi rita12399, thank you for being awesome on Carousell! We want more Carousellers see you and your listings and hope you can keep up the good listings and bring good experience to fellow Carousellers.</string>
-    <string name="date_of_creation">5 hours ago</string>
     <string name="statistics">MobData Statistics</string>
-    <string name="recent">Recent</string>
-    <string name="popular">Popular</string>
     <string name="error_msg">Something wrong happend. Please try again later</string>
     <string name="network_issue_msg">Due to network issue, offline data is loaded</string>
-    <string name="quater_title">Quater</string>
+    <string name="quater_title">Quarter</string>
     <string name="data_volume_title">Volume of Mobile Data</string>
     <string name="Q1">Q1</string>
     <string name="Q2">Q2</string>
@@ -20,4 +12,5 @@
     <string name="qone_data_volume">N/A</string>
     <string name="total_volume">Total Data Volume(2018)</string>
     <string name="data_volume_value">50 PB</string>
+    <string name="data_volume_usage_decresed_msg">Please check the data volume usage decresed one of the quarter</string>
 </resources>
