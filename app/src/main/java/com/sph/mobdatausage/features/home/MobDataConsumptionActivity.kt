@@ -1,14 +1,66 @@
 package com.sph.mobdatausage.features.home
 
-import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.LinearLayoutManager
 import com.sph.mobdatausage.R
+import com.sph.mobdatausage.common.base.BaseActivity
+import com.sph.mobdatausage.di.component.ActivityComponent
+import com.sph.mobdatausage.exts.hide
+import com.sph.mobdatausage.exts.setUpToolbar
+import com.sph.mobdatausage.exts.show
+import com.sph.mobdatausage.exts.showToast
+import com.sph.mobdatausage.features.home.adapter.MobDataConsumptionAdapter
+import com.sph.mobdatausage.model.DataConsumedYearly
+import com.sph.mobdatausage.model.MobDataConsumption
+import kotlinx.android.synthetic.main.activity_mobdata_stats.*
+import javax.inject.Inject
 
-class MobDataConsumptionActivity : AppCompatActivity() {
+class MobDataConsumptionActivity : BaseActivity<MobDataConsumptionPresenter>(),
+        MobDataConsumptionAdapter.Listener,
+        MobDataConsumptionView {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_mobdata_stats)
+
+    @Inject
+    lateinit var mobDataConsumptionAdapter: MobDataConsumptionAdapter
+
+    override fun initView() {
+        setUpToolbar(toolbar, resources.getString(R.string.statistics))
+        setupRecyclerView()
+        presenter.getMobileDataConsumption()
     }
 
+    private fun setupRecyclerView() {
+        mobDataConsumptionAdapter.setListener(this)
+        rvNetworkStatistics.layoutManager = LinearLayoutManager(this)
+        rvNetworkStatistics.adapter = mobDataConsumptionAdapter
+    }
+
+    override fun statisticsClicked(mobDataConsumption: MobDataConsumption) {
+
+    }
+
+    override fun showError() {
+        showToast(resources.getString(R.string.error_msg))
+    }
+
+    override fun showLoader() {
+        progressBar.show()
+    }
+
+    override fun hideLoader() {
+        progressBar.hide()
+    }
+
+    override fun showNetworkUsgaeDetails(statistics: List<DataConsumedYearly>) {
+        mobDataConsumptionAdapter.updateArticles(statistics)
+    }
+
+    override val layout: Int = R.layout.activity_mobdata_stats
+
+    override fun inject(activityComponent: ActivityComponent) {
+        activityComponent.inject(this)
+    }
+
+    override fun attachView() {
+        presenter.attachView(this)
+    }
 }
