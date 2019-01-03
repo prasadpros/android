@@ -4,20 +4,20 @@ This project covers mainly consuming the web API for mobile data consumption dur
 
 This App follows the well architectural design and design patterns for achieving better maintainable, loosely coupled and unit testable. The following patterns and libraries are used.
 
--Kotlin
+-Kotlin as our language to code in
 
--MVP 
+-MVP Architecture for lose coupling  between components
 
--Dagger2
+-Dagger 2 for dependency injection
 
--Retrofit
+-Retrofit for network requests
 
--Gson
+-Gson for parsing the json data
 
--RxKotlin
+-RxKotlin  to handle execution of data operations
 
--Junit
+-Junit for unit tests
 
--Mockito
+-Mockito for handling mock data in our tests
 
--Expresso
+-Espresso for our Android UI tests
