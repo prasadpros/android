@@ -17,7 +17,6 @@ class MobDataConsumptionActivity : BaseActivity<MobDataConsumptionPresenter>(),
         MobDataConsumptionAdapter.Listener,
         MobDataConsumptionView {
 
-
     @Inject
     lateinit var mobDataConsumptionAdapter: MobDataConsumptionAdapter
 
@@ -35,10 +34,10 @@ class MobDataConsumptionActivity : BaseActivity<MobDataConsumptionPresenter>(),
     }
 
     override fun statisticsClicked(dataConsumedYearly: DataConsumedYearly) {
-      if(dataConsumedYearly.isDataVolumeConsumptionDecreased){
-          showToast("${resources.getString(R.string.data_volume_usage_decresed_msg)} " +
-                  " in ${dataConsumedYearly.yearOfConsumption}")
-      }
+        if (dataConsumedYearly.isDataVolumeConsumptionDecreased) {
+            showToast("${resources.getString(R.string.data_volume_usage_decresed_msg)} " +
+                    " in ${dataConsumedYearly.yearOfConsumption}")
+        }
     }
 
     override fun showError() {
@@ -66,4 +65,6 @@ class MobDataConsumptionActivity : BaseActivity<MobDataConsumptionPresenter>(),
     override fun attachView() {
         presenter.attachView(this)
     }
+
+
 }
